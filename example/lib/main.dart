@@ -26,12 +26,13 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
     String batteryLevel;
     // Platform messages may fail, so we use a try/catch PlatformException.
+    /*
     try {
       platformVersion = await Pluginhello.platformVersion;
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
-
+    */
     try {
       batteryLevel = await Pluginhello.batteryLevel;
     } on PlatformException {
@@ -44,7 +45,7 @@ class _MyAppState extends State<MyApp> {
     if (!mounted) return;
 
     setState(() {
-      _platformVersion = platformVersion;
+      //_platformVersion = platformVersion;
       _batteryLevel = batteryLevel;
     });
   }

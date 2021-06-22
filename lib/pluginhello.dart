@@ -21,6 +21,16 @@ class Pluginhello {
     final String level = await _channel.invokeMethod('getBatteryLeval');
     return level;
   }
+
+  static Future<int> onKeyDown(int key) async {
+    final int numNotesOn = await _channel.invokeMethod('onKeyDown', [key]);
+    return numNotesOn;
+  }
+
+  static Future<int> onKeyUp(int key) async {
+    final int numNotesOn = await _channel.invokeMethod('onKeyUp', [key]);
+    return numNotesOn;
+  }
 }
 
 class PlatformOriginDialog {
