@@ -57,8 +57,12 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_batteryLevel\n'),
-        ),
+            child: Column(
+          children: <Widget>[
+            Text('Running on: $_platformVersion\n'),
+            Text('Battry Leval: $_batteryLevel\n'),
+          ],
+        )),
       ),
     );
   }
