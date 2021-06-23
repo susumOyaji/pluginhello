@@ -7,6 +7,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
+import android.os.BatteryManager
 
 /** PluginhelloPlugin */
 public class PluginhelloPlugin: FlutterPlugin, MethodCallHandler {
@@ -38,12 +39,38 @@ public class PluginhelloPlugin: FlutterPlugin, MethodCallHandler {
     }
   }
 
+
+
+  //メソッド名は method プロパティで取得できています。
+  //これによって、同じチャネルを使って、 複数の種類の呼び出しが可能になります。
+  //メソッド呼び出しの結果は onMethodCall に渡される MethodChannel.Result オブジェクトを使って返します。
+
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    
+    
     if (call.method == "getPlatformVersion") {
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
     } else {
       result.notImplemented()
     }
+    
+    /* 
+    if (call.method == "ggetBatteryLevel") {
+     
+    
+      result.success("GetBattry ${BatteryManager.EXTRA_SCALE}")
+    } else {
+      result.notImplemented()
+    }
+    */
+     //val batteryPct: Float? = batteryStatus?.let { intent ->
+     //   val level: Int = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1)
+     //   val scale: Int = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1)
+     //   level * 100 / scale.toFloat()
+    //}
+
+
+    
   }
 
   override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {

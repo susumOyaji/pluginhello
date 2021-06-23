@@ -9,8 +9,12 @@ import 'package:flutter/services.dart';
 //--org: organaizationを指定します。通常、Reverse domain nameで指定します
 //-i swift -a kotlin: デフォルトでプロジェクトのネイティブコードは、Objective-CとJavaで生成されますが、SwiftとKotlinを使いたい場合は、このオプションで指定します。
 
+//チャネルのクライアント側とホスト側は、チャネルコンストラクターで渡されたチャネル名を介して接続されます。
+//1つのアプリで使用されるすべてのチャンネル名は一意である必要があります。
+//チャネル名の前に一意の「ドメインプレフィックス」又は"アプリパッケージ名/チャンネル名"を付けます
 class Pluginhello {
   static const MethodChannel _channel = const MethodChannel('pluginhello');
+  //static const platform = const MethodChannel('samples.flutter.dev/battery');
 
   static Future<String> get platformVersion async {
     final String version = await _channel.invokeMethod('getPlatformVersion');
@@ -18,7 +22,7 @@ class Pluginhello {
   }
 
   static Future<String> get batteryLevel async {
-    final String level = await _channel.invokeMethod('getBatteryLeval');
+    final String level = await _channel.invokeMethod('ggetBatteryLevel');
     return level;
   }
 
